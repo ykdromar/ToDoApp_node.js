@@ -6,6 +6,7 @@ A simple To Do App using node.js, mongoDB &amp; express.js
 2. Please ensure that node.js and mongoDB is installed in your device
 3. Run the command "npm install"
 4. Run the command "node index.js"
+5. Visit "http://localhost:8000/" to view app
 
 Hurray ! App Started successfully
 
