@@ -1,0 +1,16 @@
+{
+  "name": "todolistapp",
+  "version": "1.0.0",
+  "description": "App to add and delete to do",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ToDo",
+    "list",
+    "task"
+  ],
+  "author": "Yash Kumar Dromar",
+  "license": "ISC"
+}
