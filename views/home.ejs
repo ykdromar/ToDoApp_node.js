@@ -4,8 +4,81 @@
         <title>
             <%=title%>
         </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+
+        <link type="text/css" rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1><%= message%></h1>
+        <h1><%= heading%></h1>
+        
+        <div id="dashboard" class="elevated box">
+            <form action="create-task" method="POST">
+            <div id="task-desc">
+            <lable for="desc">Description</lable>
+            <input type="text" id="decs" name="desc" style="width:98%" placeholder="Task Description" required><br>
+            </div>
+            <div id="task-info">
+                <span>
+                <lable for="tag">Category</lable>
+                <select id="tag" name="tag">
+                    <option value="None">None</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Home">Home</option>
+                    <option value="College">College</option>
+                    <option value="Friends">Friends</option>
+
+                </select>
+            </span>
+                <span>
+                <label for="due">Due Date</label>
+                <input type="date" name="due" id="due" placeholder="Due Date">
+                </span>
+            </div>
+            <div id="task-action">
+                <button type="submit" id="add">Add Task</button>
+            </form>
+            <form action="/delete" method="post">
+                <button type="submit" id="delete" >Delete Task</button>
+            </div>
+        </div>
+        <div id="list" class="elevated box">
+            <h4>Upcomming Tasks</h4>
+            <% if(tasks.length==0){%>
+                No Tasks
+                <%}else{ let count=0;%>
+            <ul type="none">
+                <% for(let task of tasks){%>
+                    <li class="task-tile">
+                        <div>
+                        <div style="display:flex; align-items:center">
+                        <input type="checkbox" value="task<%=++count%>" name="<%=task._id%>">
+                            
+                       <%= task.desc%>
+                       </div>
+                       <%if(task.due){%>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-calendar"></i>&nbsp;<%=task.due%>
+                       <%}%>
+                        </div>
+                        <% if(task.tag=="Personal"){%>
+                        <div class="tag-color" style="background-color: lightgreen;"><%=task.tag%></div>
+                            <%}%>
+                            <% if(task.tag=="Home"){%>
+                                <div class="tag-color" style="background-color: rgb(245, 245, 171);"><%=task.tag%></div>
+                                    <%}%>
+                                    <% if(task.tag=="College"){%>
+                                        <div class="tag-color" style="background-color: lightskyblue;"> <%=task.tag%></div>
+                                            <%}%>
+                                            <% if(task.tag=="Friends"){%>
+                                                <div class="tag-color" style="background-color: lightpink;"> <%=task.tag%></div>
+                                                    <%}%>
+                    </li>
+                    <%} %> 
+            </ul>
+            <%}%>
+        </div>
+    </form>
+        <script src="https://kit.fontawesome.com/ad339c6dae.js" crossorigin="anonymous"></script>
     </body>
 </html>
